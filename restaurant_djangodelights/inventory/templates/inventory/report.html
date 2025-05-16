@@ -1,0 +1,11 @@
+<!-- inventory/templates/inventory/report.html -->
+{% extends "inventory/base.html" %}
+
+{% block title %}Relatório Financeiro{% endblock %}
+
+{% block content %}
+  <h1>Relatório Financeiro</h1>
+  <p><strong>Receita Total:</strong> R$ {{ total_revenue|floatformat:2 }}</p>
+  <p><strong>Custo Total dos Ingredientes:</strong> R$ {{ total_cost|floatformat:2 }}</p>
+  <p><strong>Lucro:</strong> R$ {{ profit|floatformat:2 }}</p>
+{% endblock %}

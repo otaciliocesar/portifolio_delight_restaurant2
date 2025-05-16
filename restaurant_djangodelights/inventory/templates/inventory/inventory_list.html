@@ -1,0 +1,31 @@
+<!-- inventory/templates/inventory/inventory_list.html -->
+{% extends "inventory/base.html" %}
+
+{% block title %}Estoque{% endblock %}
+
+{% block content %}
+  <h1>Ingredientes no Estoque</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Quantidade</th>
+        <th>Unidade</th>
+        <th>Preço por unidade (R$)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ingredient in ingredients %}
+      <tr>
+        <td>{{ ingredient.name }}</td>
+        <td>{{ ingredient.quantity }}</td>
+        <td>{{ ingredient.unit }}</td>
+        <td>{{ ingredient.price_per_unit|floatformat:2 }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="4">Nenhum ingrediente encontrado.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'inventory:ingredient-add' %}"><button>Adicionar Ingrediente</button></a>
+{% endblock %}

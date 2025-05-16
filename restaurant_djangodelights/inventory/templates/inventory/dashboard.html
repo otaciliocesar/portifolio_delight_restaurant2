@@ -1,0 +1,39 @@
+{% extends "inventory/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+  <h1>Dashboard</h1>
+
+  <h2>Resumo Financeiro</h2>
+  <p><strong>Receita total:</strong> R$ {{ total_revenue|floatformat:2 }}</p>
+  <p><strong>Custo total:</strong> R$ {{ total_cost|floatformat:2 }}</p>
+  <p><strong>Lucro:</strong> R$ {{ profit|floatformat:2 }}</p>
+
+  <h2>Itens do Cardápio</h2>
+  <ul>
+    {% for item in menu_items %}
+      <li>{{ item.title }} - R$ {{ item.price|floatformat:2 }}</li>
+    {% empty %}
+      <li>Sem itens no cardápio.</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Compras Realizadas</h2>
+  <ul>
+    {% for p in purchases %}
+      <li>{{ p.menu_item.title }} em {{ p.timestamp|date:"d/m/Y H:i" }}</li>
+    {% empty %}
+      <li>Sem compras registradas.</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Ingredientes no Estoque</h2>
+  <ul>
+    {% for ing in inventory %}
+      <li>{{ ing.name }}: {{ ing.quantity }} {{ ing.unit }} (R$ {{ ing.price_per_unit|floatformat:2 }})</li>
+    {% empty %}
+      <li>Sem ingredientes no estoque.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

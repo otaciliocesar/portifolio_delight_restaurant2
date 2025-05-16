@@ -1,0 +1,21 @@
+<!-- inventory/templates/inventory/menu.html -->
+{% extends "inventory/base.html" %}
+
+{% block title %}Cardápio{% endblock %}
+
+{% block content %}
+  <h1>Cardápio</h1>
+  {% for item in menu_items %}
+    <h2>{{ item.title }} - R$ {{ item.price|floatformat:2 }}</h2>
+    <p>Ingredientes:</p>
+    <ul>
+      {% for req in item.requirements.all %}
+        <li>{{ req.ingredient.name }}: {{ req.quantity }} {{ req.ingredient.unit }}</li>
+      {% empty %}
+        <li>Sem ingredientes listados.</li>
+      {% endfor %}
+    </ul>
+  {% empty %}
+    <p>Não há itens no cardápio.</p>
+  {% endfor %}
+{% endblock %}

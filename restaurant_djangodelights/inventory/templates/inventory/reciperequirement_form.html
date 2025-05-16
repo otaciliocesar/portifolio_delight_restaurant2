@@ -1,0 +1,10 @@
+{% extends "inventory/base.html" %}
+{% block title %}Adicionar Ingrediente ao Item do Cardápio{% endblock %}
+{% block content %}
+  <h2>Adicionar Ingrediente ao Item do Cardápio</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+  </form>
+{% endblock %}
