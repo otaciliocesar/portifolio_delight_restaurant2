@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,10 +19,13 @@
           <li class="nav-item"><a class="nav-link" href="{% url 'inventory:purchases' %}">Compras</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'inventory:dashboard' %}">Relatório</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'inventory:reciperequirement-add' %}">Adicionar Receita</a></li>
-          {% if user.is_authenticated %}
-  <p>Bem-vindo, {{ user.username }}! <a href="{% url 'inventory:logout' %}">Logout</a></p>
+         {% if user.is_authenticated %}
+  <p>Bem-vindo, {{ user.username }}!</p>
+  <form method="POST" action="{% url 'inventory:logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+  </form>
 {% endif %}
-
 
         </ul>
       </div>

@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    HomeView,
+    HomePageView,
     IngredientListView,
     IngredientDeleteView,
     MenuItemListView,
@@ -16,7 +16,7 @@ app = 'inventory'
 urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='inventory/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='inventory:login'), name='logout'),
-    path('home/', HomeView.as_view(), name='home'),
+    path('home/', HomePageView.as_view(), name='home'),
     path('ingredients/', IngredientListView.as_view(), name='ingredients'),
     path('ingredients/delete/<int:pk>/', IngredientDeleteView.as_view(), name='ingredient-delete'),
     path('menu/', MenuItemListView.as_view(), name='menu'),

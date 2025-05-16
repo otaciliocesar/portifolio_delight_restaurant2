@@ -1,15 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DeleteView, TemplateView
+from django.views.generic import ListView, DeleteView, TemplateView, CreateView
 from django.urls import reverse_lazy
 from .models import Ingredient, MenuItem, RecipeRequirement, Purchase
 from .forms import IngredientForm, MenuItemForm, RecipeRequirementForm, PurchaseForm
 from django.db.models import Sum, F
 from decimal import Decimal
-from django.views.generic import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
-class HomeView(TemplateView):    
+class HomePageView(TemplateView):    
     template_name = 'inventory/home.html'    
     context_object_name = 'home'
 
