@@ -16,6 +16,9 @@
       {% endfor %}
     </ul>
   {% empty %}
+  
     <p>Não há itens no cardápio.</p>
+   
   {% endfor %}
+   <a href="{% url 'inventory:menuitem-add' %}"><button>Adicionar item ao Cardápio</button></a>
 {% endblock %}

@@ -10,34 +10,33 @@
 </head>
 <div style="display: flex; align-items: center; justify-content: space-between; padding: 40px;">
   <div style="max-width: 50%;">
-    <h1 style="font-size: 3em;">Desire <span style="color: orange;">Food</span> for Your Taste</h1>
-    <p>Food is what we eat to stay alive and healthy. It comes in many different forms and flavors, from fruits and vegetables to meats and grains.</p>
-    <a href="{% url 'inventory:purchase-add' %}" class="btn btn-danger mt-3">Order Now</a>
+    <h1 style="font-size: 3em;">Peça <span style="color: orange;">Comida</span> ao Seu Gosto</h1>
+    <p>Comida é o que comemos para nos mantermos vivos e saudáveis. Ele vem em muitas formas e sabores diferentes, desde frutas e vegetais até carnes e grãos.</p>
+    <a href="{% url 'inventory:purchase-add' %}" class="btn btn-danger mt-3">Fazer pedido</a>
   </div>
   <div>
     <img src="https://images.pexels.com/photos/7886593/pexels-photo-7886593.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Pizza Girl" style="width: 100%; max-width: 500px; border-radius: 20px;">
   </div>
 </div>
-
 <!-- Features Section -->
 <div style="display: flex; justify-content: space-around; padding: 40px; background-color: #f9f9f9;">
   <div style="text-align: center;">
     <img src="https://img.icons8.com/?size=100&id=7o9vtHniHh4l&format=png&color=000000/50" alt="Icon">
-    <h4>Quality Food</h4>
+    <h4>Comida de Qualidade</h4>
     <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
-    <a href="#">Learn More</a>
+    <a href="#">Saiba mais</a>
   </div>
   <div style="text-align: center;">
     <img src="https://img.icons8.com/?size=100&id=UmF1v-dFKf1k&format=png&color=000000/50" alt="Icon">
-    <h4>Fast Delivery</h4>
+    <h4>Entrega Rápida</h4>
     <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
-    <a href="#">Learn More</a>
+    <a href="#">Saiba mais</a>
   </div>
   <div style="text-align: center;">
     <img src="https://img.icons8.com/?size=100&id=b4ioSM4m7NNC&format=png&color=000000/50" alt="Icon">
-    <h4>Affordable Price</h4>
+    <h4>Preço Justo</h4>
     <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
-    <a href="#">Learn More</a>
+    <a href="#">Saiba mais</a>
   </div>
 </div>
 
@@ -45,36 +44,68 @@
 <!-- SEÇÃO: Por que escolher nosso restaurante -->
 <div class="why-choose-us">
   <div class="choose-image">
-    <img src="https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Prato de comida">
+    <img src="https://images.pexels.com/photos/3738755/pexels-photo-3738755.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Prato de comida">
   </div>
   <div class="choose-content">
-    <h1>Why People Choose us?</h1>
+    <h1>Porque somos escolhidos?</h1>
 
     <div class="choose-box">
-      <img src="https://img.icons8.com/color/48/000000/delivery.png" alt="Delivery Icon">
+      <img src="https://img.icons8.com/?size=100&id=12248&format=png&color=000000" alt="Delivery Icon">
       <div>
-        <h4>Convenient and Reliable</h4>
-        <p>Whether you dine in, take out, or order delivery, our service is convenient, fast, and reliable, making mealtime hassle-free.</p>
+        <h4>Conveniente e confiável</h4>
+        <p>Quer você jante no local, retire ou solicite entrega, nosso serviço é conveniente, rápido e confiável, tornando a hora das refeições descomplicada.</p>
       </div>
     </div>
 
     <div class="choose-box">
-      <img src="https://img.icons8.com/color/48/000000/menu.png" alt="Menu Icon">
+      <img src="https://img.icons8.com/?size=100&id=778zebhCkoVx&format=png&color=000000" alt="Menu Icon">
       <div>
-        <h4>Variety of Options</h4>
-        <p>From hearty meals to light snacks, we offer a wide range of options to suit every taste and craving.</p>
+        <h4>Variedade de opções</h4>
+        <p>Desde refeições saudáveis ​​a snacks ligeiros, oferecemos um vasto leque de opções para todos os gostos e desejos.</p>
       </div>
     </div>
 
     <div class="choose-box">
       <img src="https://img.icons8.com/color/48/000000/hamburger.png" alt="Burger Icon">
       <div>
-        <h4>Eat Burger</h4>
-        <p>Our burgers are grilled to perfection, with juicy patties and flavorful toppings that make every bite a delicious experience.</p>
+        <h4>Coma hamburger</h4>
+        <p>Nossos hambúrgueres são grelhados na perfeição, com hambúrgueres suculentos e coberturas saborosas que tornam cada mordida uma experiência deliciosa.</p>
       </div>
     </div>
   </div>
 </div>
+<section class="best-sellers py-5">
+  <div class="container text-center">
+    <h2 class="mb-3 fw-bold">Our best Seller Dishes🔥🔥</h2>
+    <p class="mb-5 text-muted">
+      Our fresh garden salad is a light and refreshing option. It features a mix of crisp lettuce, juicy tomato all tossed in your choice of dressing.
+    </p>
+
+    <div class="row g-4">
+      {% for item in menu_items %}
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="{{ item.image.url }}" class="card-img-top rounded-top" alt="{{ item.name }}">
+          <div class="card-body text-start">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <div class="text-warning">
+                ⭐⭐⭐⭐⭐
+              </div>
+              <span class="badge bg-danger">Buy Now</span>
+            </div>
+            <h5 class="text-end fw-bold text-dark">${{ item.price }}</h5>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+        <p>Nenhum item disponível no cardápio.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
 
 
 {% endblock %}

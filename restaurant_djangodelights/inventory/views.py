@@ -8,6 +8,12 @@ from decimal import Decimal
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
+
+
+
+    
+
+
 class HomePageView(TemplateView):    
     template_name = 'inventory/home.html'    
     context_object_name = 'home'
@@ -33,18 +39,25 @@ class IngredientDeleteView(LoginRequiredMixin, DeleteView):
 class MenuItemListView(ListView):
     model = MenuItem
     template_name = 'inventory/menu.html'
-    context_object_name = 'menu'
+    context_object_name = 'menu_items'
+
+    def get_queryset(self):
+        return MenuItem.objects.prefetch_related('requirements__ingredient')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["menu_items"] = MenuItem.objects.prefetch_related('requirements__ingredient')
+        # Passa todos os itens para a variável destaque_items para o template usar
+        context['destaque_items'] = self.get_queryset()  
+        # Se quiser manter menu_items também (opcional)
+        context['menu_items'] = self.get_queryset()
         return context
+    
 class MenuItemCreateView(LoginRequiredMixin, CreateView):
     model = MenuItem
     form_class = MenuItemForm
     template_name = 'inventory/menuitem_form.html'
     success_url = '/inventory/menu/'
-    login_url = 'inventory:login'
+    
 
 @login_required(login_url="inventory:login")
 def purchase_create_view(request):
@@ -132,3 +145,6 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         context['profit'] = profit
         
         return context
+    
+
+

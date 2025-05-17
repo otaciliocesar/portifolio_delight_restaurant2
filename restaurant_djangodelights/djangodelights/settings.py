@@ -128,3 +128,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_URL = 'inventory:login'
 LOGIN_REDIRECT_URL = 'inventory:dashboard'  # ou a página que quiser após login
 LOGOUT_REDIRECT_URL = 'inventory:login'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
