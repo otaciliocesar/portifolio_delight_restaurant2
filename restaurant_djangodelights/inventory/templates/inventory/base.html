@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Restaurante{% endblock %}</title>
@@ -9,10 +9,12 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-white mb-4 shadow-sm">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'inventory:home' %}">Início</a>
+  <div class="container-fluid">    
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#intro">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="#quemsomos">Quem somos nós?</a></li>
+        <li class="nav-item"><a class="nav-link" href="#bestsellers">Mais vendidos</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'inventory:ingredients' %}">Estoque</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'inventory:menu' %}">Cardápio</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'inventory:purchase-add' %}">Comprar</a></li>
